@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 
+class QStackedWidget;
+
 namespace Ui {
 class MainWindow;
 }
@@ -18,12 +20,17 @@ public:
     //处理从登录界面得到的分数数据
     void dealScore(QString score_data);
 
+signals:
+    void sendScore(QStringList,QStringList,std::vector<double>,std::vector<double>);
+
 
 private slots:
     void on_action_B_triggered();
 
 private:
     Ui::MainWindow *ui;
+
+    QStackedWidget *m_stackedWidget;
 
     //对成绩进行分析计算
     void calculateScore();

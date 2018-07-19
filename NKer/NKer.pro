@@ -26,14 +26,17 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    logindialog.cpp
+    logindialog.cpp \
+    tabledialog.cpp
 
 HEADERS += \
         mainwindow.h \
-    logindialog.h
+    logindialog.h \
+    tabledialog.h
 
 FORMS += \
         mainwindow.ui \
-    logindialog.ui
+    logindialog.ui \
+    tabledialog.ui
 
 QT    +=network

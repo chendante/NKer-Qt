@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "tabledialog.h"
 #include <QDebug>
+#include<QStackedWidget>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -15,6 +17,16 @@ MainWindow::MainWindow(QWidget *parent) :
     ave_e_score=0;
     ave_abcd_score=0;
     ave_abcde_score=0;
+
+    m_stackedWidget=new QStackedWidget(this);
+    TableDialog *tableDlg=new TableDialog(this);
+    m_stackedWidget->addWidget(tableDlg);
+    m_stackedWidget->move(0,30);
+    m_stackedWidget->resize(600,600);
+    m_stackedWidget->hide();
+
+    QObject::connect(this, SIGNAL(sendScore(QStringList,QStringList,std::vector<double>,std::vector<double>)),
+                     tableDlg,SLOT(showScore(QStringList,QStringList,std::vector<double>,std::vector<double>)));
 }
 
 MainWindow::~MainWindow()
@@ -182,22 +194,12 @@ void MainWindow::calculateScore()
     ui->label_11->setText(QString::number(ave_abcd_score));
     ui->label_13->setText(QString::number(ave_abcde_score));
 
-    ui->tableWidget->setRowCount(scores.size());
-    for(int j=0;j<scores.size();j++){
-        ui->tableWidget->setItem(j,0,new QTableWidgetItem(class_types[j]));
-        ui->tableWidget->setItem(j,1,new QTableWidgetItem(class_names[j]));
-        ui->tableWidget->setItem(j,2,new QTableWidgetItem(QString::number(scores[j])));
-        ui->tableWidget->setItem(j,3,new QTableWidgetItem(QString::number(credits[j])));
-    }
+    emit sendScore(class_types,class_names,scores,credits);
 }
 
 void MainWindow::on_action_B_triggered()
 {
-    ui->tableWidget->setRowCount(scores.size());
-    for(int j=0;j<scores.size();j++){
-        ui->tableWidget->setItem(j,0,new QTableWidgetItem(class_types[j]));
-        ui->tableWidget->setItem(j,1,new QTableWidgetItem(class_names[j]));
-        ui->tableWidget->setItem(j,2,new QTableWidgetItem(QString::number(scores[j])));
-        ui->tableWidget->setItem(j,3,new QTableWidgetItem(QString::number(credits[j])));
-    }
+    int index=0;
+    m_stackedWidget->show();
+    m_stackedWidget->setCurrentIndex(index);
 }
