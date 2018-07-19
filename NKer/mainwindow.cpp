@@ -217,6 +217,20 @@ void MainWindow::on_action_B_triggered()
 void MainWindow::on_action_A_triggered()
 {
     m_stackedWidget->hide();
+    ui->label->show();
+    ui->label_2->show();
+    ui->label_3->show();
+    ui->label_4->show();
+    ui->label_5->show();
+    ui->label_6->show();
+    ui->label_7->show();
+    ui->label_8->show();
+    ui->label_9->show();
+    ui->label_10->show();
+    ui->label_11->show();
+    ui->label_12->show();
+    ui->label_13->show();
+    ui->label_14->show();
 }
 
 void MainWindow::on_action_GPA_C_triggered()

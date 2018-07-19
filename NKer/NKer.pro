@@ -43,3 +43,6 @@ FORMS += \
     gpadialog.ui
 
 QT    +=network
+
+RESOURCES += \
+    myfile.qrc

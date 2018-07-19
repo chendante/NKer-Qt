@@ -5,6 +5,8 @@
 #include <QNetworkRequest>
 #include <QMessageBox>
 #include <QTextCodec>
+#include <QFile>
+#include <QFileDialog>
 
 LoginDialog::LoginDialog(QWidget *parent) :
     QDialog(parent),
@@ -24,6 +26,18 @@ LoginDialog::LoginDialog(QWidget *parent) :
     m_login=new QNetworkAccessManager(this);
 
     QObject::connect(m_login, SIGNAL(finished(QNetworkReply*)), this, SLOT(finishedLogin(QNetworkReply*)));
+
+     QFile file("/login.txt");
+     if(!file.open(QIODevice::ReadOnly| QIODevice::Text))
+     {
+         qDebug()<<"Can't open the file!"<<endl;
+     }
+     QTextStream txtInput(&file);
+     QString str1=txtInput.readLine();
+     ui->lineEdit->setText(str1);
+     QString str2=txtInput.readLine();
+     ui->lineEdit_2->setText(str2);
+     file.close();
 }
 
 LoginDialog::~LoginDialog()
@@ -35,6 +49,20 @@ void LoginDialog::on_pushButton_clicked()
 {
     QString id=ui->lineEdit->text();
     QString password=ui->lineEdit_2->text();
+
+    if(ui->checkBox->isChecked())
+    {
+        QFile f1("/login.txt");
+
+        if(!f1.open(QIODevice::WriteOnly|QIODevice::Text))
+        {
+            qDebug()<<"Can't open the file222!"<<endl;
+        }
+        QTextStream str(&f1);
+        qDebug()<<id<<password;
+        str<<id<<endl<<password;
+        f1.close();
+    }
 
     //设置 request headers
     QNetworkRequest m_req(QUrl("http://eamis.nankai.edu.cn/eams/login.action"));  //该网址为教学管理系统登陆网址
