@@ -22,10 +22,15 @@ public:
 
 signals:
     void sendScore(QStringList,QStringList,std::vector<double>,std::vector<double>);
+    void sendScore2(QStringList,QStringList,std::vector<double>,std::vector<double>);
 
 
 private slots:
     void on_action_B_triggered();
+
+    void on_action_A_triggered();
+
+    void on_action_GPA_C_triggered();
 
 private:
     Ui::MainWindow *ui;
@@ -38,7 +43,7 @@ private:
     //正则表达式，用于选取页面中的有用信息
     QString rul_id=(">""([0123456789]{7})""<");//学号
     QString rul_name=("18%\">""([^2016:]{2,20})""</td>");//姓名
-    QString rul_socre=("</td>\r\n\t\t\t \t<td>([^刘子晨]{1,50})</td>\r\n\t\t\t \t<td align=\"center\">([0123456789. ]{0,10})</td>\r\n\t\t\t \t<td align=\"center\">([0123456789. ]{0,10})</td>\r\n\t\t\t \t<td align=\"center\">([0123456789. ]{0,10}) </td>\r\n\t\t\t");
+    QString rul_socre=("</td>\r\n\t\t\t \t<td>([^烫]{1,50})</td>\r\n\t\t\t \t<td align=\"center\">([0123456789. ]{0,10})</td>\r\n\t\t\t \t<td align=\"center\">([0123456789. ]{0,10})</td>\r\n\t\t\t \t<td align=\"center\">([0123456789. ]{0,10}) </td>\r\n\t\t\t");
     QString rul_type1=("院系公共必修课");
     QString rul_type2=("专业必修课");
     QString rul_type3=("专业选修课");

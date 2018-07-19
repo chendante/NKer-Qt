@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "tabledialog.h"
+#include "gpadialog.h"
 #include <QDebug>
 #include<QStackedWidget>
 
@@ -20,13 +21,20 @@ MainWindow::MainWindow(QWidget *parent) :
 
     m_stackedWidget=new QStackedWidget(this);
     TableDialog *tableDlg=new TableDialog(this);
+    GPADialog *gpaDlg=new GPADialog(this);
+
     m_stackedWidget->addWidget(tableDlg);
-    m_stackedWidget->move(0,30);
+    m_stackedWidget->addWidget(gpaDlg);
+
+    m_stackedWidget->move(0,35);
     m_stackedWidget->resize(600,600);
     m_stackedWidget->hide();
 
     QObject::connect(this, SIGNAL(sendScore(QStringList,QStringList,std::vector<double>,std::vector<double>)),
                      tableDlg,SLOT(showScore(QStringList,QStringList,std::vector<double>,std::vector<double>)));
+
+    QObject::connect(this, SIGNAL(sendScore2(QStringList,QStringList,std::vector<double>,std::vector<double>)),
+                     gpaDlg,SLOT(showScore2(QStringList,QStringList,std::vector<double>,std::vector<double>)));
 }
 
 MainWindow::~MainWindow()
@@ -158,27 +166,27 @@ void MainWindow::calculateScore()
     QPalette pa;
     double red=90;
     pa.setColor(QPalette::WindowText,Qt::red);
-    if(ave_a_score<red)
+    if(ave_a_score<ave_abcde_score)
     {
         ui->label_2->setPalette(pa);
     }
-    if(ave_b_score<red)
+    if(ave_b_score<ave_abcde_score)
     {
         ui->label_4->setPalette(pa);
     }
-    if(ave_c_score<red)
+    if(ave_c_score<ave_abcde_score)
     {
         ui->label_6->setPalette(pa);
     }
-    if(ave_d_score<red)
+    if(ave_d_score<ave_abcde_score)
     {
         ui->label_8->setPalette(pa);
     }
-    if(ave_e_score<red)
+    if(ave_e_score<ave_abcde_score)
     {
         ui->label_10->setPalette(pa);
     }
-    if(ave_abcd_score<red)
+    if(ave_abcd_score<ave_abcde_score)
     {
         ui->label_11->setPalette(pa);
     }
@@ -195,6 +203,8 @@ void MainWindow::calculateScore()
     ui->label_13->setText(QString::number(ave_abcde_score));
 
     emit sendScore(class_types,class_names,scores,credits);
+
+    emit sendScore2(class_types,class_names,scores,credits);
 }
 
 void MainWindow::on_action_B_triggered()
@@ -202,4 +212,30 @@ void MainWindow::on_action_B_triggered()
     int index=0;
     m_stackedWidget->show();
     m_stackedWidget->setCurrentIndex(index);
+}
+
+void MainWindow::on_action_A_triggered()
+{
+    m_stackedWidget->hide();
+}
+
+void MainWindow::on_action_GPA_C_triggered()
+{
+    int index=1;
+    m_stackedWidget->show();
+    m_stackedWidget->setCurrentIndex(index);
+    ui->label->hide();
+    ui->label_2->hide();
+    ui->label_3->hide();
+    ui->label_4->hide();
+    ui->label_5->hide();
+    ui->label_6->hide();
+    ui->label_7->hide();
+    ui->label_8->hide();
+    ui->label_9->hide();
+    ui->label_10->hide();
+    ui->label_11->hide();
+    ui->label_12->hide();
+    ui->label_13->hide();
+    ui->label_14->hide();
 }

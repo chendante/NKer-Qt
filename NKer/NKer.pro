@@ -27,16 +27,19 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     logindialog.cpp \
-    tabledialog.cpp
+    tabledialog.cpp \
+    gpadialog.cpp
 
 HEADERS += \
         mainwindow.h \
     logindialog.h \
-    tabledialog.h
+    tabledialog.h \
+    gpadialog.h
 
 FORMS += \
         mainwindow.ui \
     logindialog.ui \
-    tabledialog.ui
+    tabledialog.ui \
+    gpadialog.ui
 
 QT    +=network

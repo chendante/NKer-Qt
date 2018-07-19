@@ -310,6 +310,7 @@
     </property>
     <addaction name="action_A"/>
     <addaction name="action_B"/>
+    <addaction name="action_GPA_C"/>
    </widget>
    <addaction name="menu"/>
   </widget>
@@ -322,6 +323,7 @@
    </attribute>
    <addaction name="action_A"/>
    <addaction name="action_B"/>
+   <addaction name="action_GPA_C"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="action_A">
@@ -338,6 +340,14 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+B</string>
+   </property>
+  </action>
+  <action name="action_GPA_C">
+   <property name="text">
+    <string>查看GPA(&amp;C)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+C</string>
    </property>
   </action>
  </widget>
