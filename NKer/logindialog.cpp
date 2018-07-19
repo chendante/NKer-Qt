@@ -70,12 +70,13 @@ void LoginDialog::finishedLogin(QNetworkReply *m_reply)
         QTextCodec *codec = QTextCodec::codecForName("UTF-8");
         QString score_data= codec->toUnicode(m_reply->readAll());
         if(score_data!=""){
-            accept();
+            this->accept();
+            emit getScore(score_data);
         }
         else {
             QMessageBox::critical(this, tr("错误"),tr("登录失败，请检查输入学号密码"));
         }
-        qDebug()<<'s'<<data.toStdString().data();
+        //qDebug()<<'s'<<score_data.toStdString().data();
         m_reply->deleteLater();
     }
 }

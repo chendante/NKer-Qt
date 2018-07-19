@@ -21,7 +21,12 @@ public:
 private slots:
     void on_pushButton_clicked();
 
+    //登录成功后，执行该槽函数
     void finishedLogin(QNetworkReply*);
+
+signals :
+    //获取分数的信号
+    void getScore(QString Score);
 
 private:
     Ui::LoginDialog *ui;
