@@ -19,6 +19,7 @@ private:
     Ui::GPADialog *ui;
 
 private slots:
+    //用于获取mainwindow传递过来的数据，并进行处理
     void showScore2(QStringList,QStringList,std::vector<double>,std::vector<double>);
 };
 

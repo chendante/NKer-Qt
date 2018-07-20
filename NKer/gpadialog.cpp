@@ -27,6 +27,7 @@ void GPADialog::showScore2(QStringList class_types,QStringList class_names,std::
 
     double sumOFcredit=0;
 
+    //通过各条成绩所代表GPA值，计算各类GPA
     for(int i=0;i<scores.size();i++)
     {
         double tem=0;
@@ -74,6 +75,7 @@ void GPADialog::showScore2(QStringList class_types,QStringList class_names,std::
     gpa1/=sumOFcredit;
     gpa2/=sumOFcredit;
 
+    //将算出的GPA值置于相应的label中
     ui->label_4->setText(QString::number(gpa));
     ui->label_5->setText(QString::number(gpa1));
     ui->label_6->setText(QString::number(gpa2));

@@ -2,8 +2,10 @@
 #include "ui_mainwindow.h"
 #include "tabledialog.h"
 #include "gpadialog.h"
+#include "weatherdialog.h"
 #include <QDebug>
-#include<QStackedWidget>
+#include <QStackedWidget>
+
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -22,9 +24,11 @@ MainWindow::MainWindow(QWidget *parent) :
     m_stackedWidget=new QStackedWidget(this);
     TableDialog *tableDlg=new TableDialog(this);
     GPADialog *gpaDlg=new GPADialog(this);
+    WeatherDialog *weatherDlg=new WeatherDialog(this);
 
     m_stackedWidget->addWidget(tableDlg);
     m_stackedWidget->addWidget(gpaDlg);
+    m_stackedWidget->addWidget(weatherDlg);
 
     m_stackedWidget->move(0,35);
     m_stackedWidget->resize(600,600);
@@ -236,6 +240,27 @@ void MainWindow::on_action_A_triggered()
 void MainWindow::on_action_GPA_C_triggered()
 {
     int index=1;
+    m_stackedWidget->show();
+    m_stackedWidget->setCurrentIndex(index);
+    ui->label->hide();
+    ui->label_2->hide();
+    ui->label_3->hide();
+    ui->label_4->hide();
+    ui->label_5->hide();
+    ui->label_6->hide();
+    ui->label_7->hide();
+    ui->label_8->hide();
+    ui->label_9->hide();
+    ui->label_10->hide();
+    ui->label_11->hide();
+    ui->label_12->hide();
+    ui->label_13->hide();
+    ui->label_14->hide();
+}
+
+void MainWindow::on_action_W_triggered()
+{
+    int index=2;
     m_stackedWidget->show();
     m_stackedWidget->setCurrentIndex(index);
     ui->label->hide();

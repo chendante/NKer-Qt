@@ -1,91 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>LoginDialog</class>
- <widget class="QDialog" name="LoginDialog">
+ <class>WeatherDialog</class>
+ <widget class="QDialog" name="WeatherDialog">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>287</height>
+    <width>557</width>
+    <height>300</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>登录NK</string>
+   <string>Dialog</string>
   </property>
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>140</x>
-     <y>210</y>
+     <x>130</x>
+     <y>250</y>
      <width>93</width>
      <height>28</height>
     </rect>
    </property>
    <property name="text">
-    <string>登录</string>
+    <string>查询</string>
    </property>
   </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>80</x>
-     <y>80</y>
-     <width>61</width>
-     <height>16</height>
+     <x>50</x>
+     <y>60</y>
+     <width>72</width>
+     <height>15</height>
     </rect>
    </property>
    <property name="text">
-    <string>学号：</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit">
-   <property name="geometry">
-    <rect>
-     <x>150</x>
-     <y>80</y>
-     <width>113</width>
-     <height>21</height>
-    </rect>
+    <string>查询城市：</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>80</x>
+     <x>50</x>
      <y>120</y>
-     <width>51</width>
+     <width>81</width>
      <height>16</height>
     </rect>
    </property>
    <property name="text">
-    <string>密码：</string>
+    <string>当前天气：</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_2">
+  <widget class="QLineEdit" name="lineEdit">
    <property name="geometry">
     <rect>
-     <x>150</x>
-     <y>120</y>
+     <x>130</x>
+     <y>60</y>
      <width>113</width>
      <height>21</height>
     </rect>
    </property>
-   <property name="echoMode">
-    <enum>QLineEdit::Password</enum>
+   <property name="text">
+    <string>津南</string>
    </property>
   </widget>
-  <widget class="QCheckBox" name="checkBox">
+  <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>260</x>
-     <y>160</y>
-     <width>61</width>
-     <height>31</height>
+     <x>160</x>
+     <y>110</y>
+     <width>371</width>
+     <height>91</height>
     </rect>
    </property>
    <property name="text">
-    <string>保存</string>
+    <string/>
    </property>
   </widget>
  </widget>

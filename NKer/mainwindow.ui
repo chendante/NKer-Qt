@@ -311,6 +311,7 @@
     <addaction name="action_A"/>
     <addaction name="action_B"/>
     <addaction name="action_GPA_C"/>
+    <addaction name="action_W"/>
    </widget>
    <addaction name="menu"/>
   </widget>
@@ -324,6 +325,7 @@
    <addaction name="action_A"/>
    <addaction name="action_B"/>
    <addaction name="action_GPA_C"/>
+   <addaction name="action_W"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="action_A">
@@ -350,8 +352,22 @@
     <string>Ctrl+C</string>
    </property>
   </action>
+  <action name="action_W">
+   <property name="icon">
+    <iconset resource="myfile.qrc">
+     <normaloff>:/files/file/weather.png</normaloff>:/files/file/weather.png</iconset>
+   </property>
+   <property name="text">
+    <string>天气预报(&amp;W)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+W</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="myfile.qrc"/>
+ </resources>
  <connections/>
 </ui>

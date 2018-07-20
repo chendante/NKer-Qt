@@ -27,11 +27,10 @@ LoginDialog::LoginDialog(QWidget *parent) :
 
     QObject::connect(m_login, SIGNAL(finished(QNetworkReply*)), this, SLOT(finishedLogin(QNetworkReply*)));
 
-     QFile file("/login.txt");
-     if(!file.open(QIODevice::ReadOnly| QIODevice::Text))
-     {
-         qDebug()<<"Can't open the file!"<<endl;
-     }
+    //读取已经保存的账号密码信息，并将其置于登录框中
+    QFile file("/login.txt");
+    file.open(QIODevice::ReadOnly| QIODevice::Text);
+
      QTextStream txtInput(&file);
      QString str1=txtInput.readLine();
      ui->lineEdit->setText(str1);
@@ -50,16 +49,15 @@ void LoginDialog::on_pushButton_clicked()
     QString id=ui->lineEdit->text();
     QString password=ui->lineEdit_2->text();
 
+    //当保存按钮被选中后，将账号密码保存在txt中
     if(ui->checkBox->isChecked())
     {
         QFile f1("/login.txt");
+        //将文件以只写形式打开
+        f1.open(QIODevice::WriteOnly|QIODevice::Text);
 
-        if(!f1.open(QIODevice::WriteOnly|QIODevice::Text))
-        {
-            qDebug()<<"Can't open the file222!"<<endl;
-        }
         QTextStream str(&f1);
-        qDebug()<<id<<password;
+
         str<<id<<endl<<password;
         f1.close();
     }
@@ -72,6 +70,7 @@ void LoginDialog::on_pushButton_clicked()
     QString content=tr("username=%1&password=%2&encodedPassword=&session_locale=zh_CN").arg(id).arg(password);
 
     m_login->post(m_req,content.toUtf8());
+
 }
 
 //得到登陆结束信号后，执行该函数

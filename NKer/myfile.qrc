@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/files">
         <file>file/login.txt</file>
+        <file>file/weather.png</file>
     </qresource>
 </RCC>

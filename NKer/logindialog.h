@@ -25,13 +25,18 @@ private slots:
     void finishedLogin(QNetworkReply*);
 
 signals :
-    //获取分数的信号
+    //获取分数的信号，获取到后传递到主窗口
     void getScore(QString Score);
 
 private:
     Ui::LoginDialog *ui;
 
+    //使用通用协议执行网络操作的类
+
+    //用于登录南开大学教学信息管理系统
     QNetworkAccessManager *m_login;
+
+
     int status;  //当前网络状态，用于函数判断执行语句
 };
 

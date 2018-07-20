@@ -21,6 +21,7 @@ public:
     void dealScore(QString score_data);
 
 signals:
+    //将分数信息传递给两个非模态子窗口的信号
     void sendScore(QStringList,QStringList,std::vector<double>,std::vector<double>);
     void sendScore2(QStringList,QStringList,std::vector<double>,std::vector<double>);
 
@@ -31,6 +32,8 @@ private slots:
     void on_action_A_triggered();
 
     void on_action_GPA_C_triggered();
+
+    void on_action_W_triggered();
 
 private:
     Ui::MainWindow *ui;
@@ -49,6 +52,7 @@ private:
     QString rul_type3=("专业选修课");
     QString rul_type4=("任选课");
 
+    //各类课的学分绩
     double ave_a_score;
     double ave_b_score;
     double ave_c_score;
@@ -57,6 +61,7 @@ private:
     double ave_abcd_score;
     double ave_abcde_score;
 
+    //下面几个数组用于存储得到的各条成绩信息
     //课程名称
     QStringList class_names;
 
