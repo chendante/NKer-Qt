@@ -54,19 +54,13 @@ void MainWindow::dealScore(QString score_data)
 
     QRegExp rx(rul_name);
     int pos1 =score_data.indexOf(rx);
-   if( pos1!=-1){name=rx.cap(1);
-   }
-   else{
-    qDebug()<<"get_name fail";
-   }
+    if( pos1!=-1){name=rx.cap(1);}
     //设置正则表达式获取学号
     QRegExp rx2(rul_id);
     int pos2 = score_data.indexOf(rx2);
 
-    if( pos2!=-1){id=rx2.cap(1);
-    }
+    if( pos2!=-1){id=rx2.cap(1);}
 
-    else{ qDebug()<<"get_name fail";}
     //改变窗体标题
     this->setWindowTitle("欢迎:"+name+" 学号:"+id);
     //设置正则表达式获取成绩
